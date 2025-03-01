@@ -8,6 +8,7 @@ from typing_extensions import TypedDict
 from langgraph.graph import StateGraph
 from langgraph.graph.message import add_messages
 from langgraph.prebuilt import ToolNode, tools_condition
+from IPython.display import Image, display
 from dotenv import load_dotenv
 import os
 
@@ -60,6 +61,19 @@ graph_builder.add_conditional_edges(
 graph_builder.add_edge("tools", "chatbot")
 graph_builder.set_entry_point("chatbot")
 graph = graph_builder.compile()
+
+
+# 9. [OPTIONAL] VISUALIZE GRAPHH
+
+try:
+    output_path = 'Websearch_graph.png'
+    graph_img = graph.get_graph().draw_mermaid_png()
+
+    with open(output_path, "wb") as f:
+        f.write(graph_img)
+except Exception:
+    # This requires some extra dependencies and is optional
+    pass
 
 
 # MAIN LOOP

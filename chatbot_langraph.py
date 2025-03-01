@@ -56,11 +56,11 @@ graph_builder.add_edge("chatbot", END)
 graph = graph_builder.compile()
 
 # DRAW THE GRAPH
-
 try:
-    graph_img = Image(graph.get_graph().draw_mermaid_png()) 
-    display(graph_img)
-    with open("graph_output.png", "wb") as f:
+    output_path = 'Chatbot_graph.png'
+    graph_img = graph.get_graph().draw_mermaid_png()
+
+    with open(output_path, "wb") as f:
         f.write(graph_img)
 except Exception:
     # This requires some extra dependencies and is optional
