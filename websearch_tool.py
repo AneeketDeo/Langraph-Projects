@@ -5,9 +5,11 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnableConfig, chain
 
 from dotenv import load_dotenv
+import os
 
 # LOAD ENV 
 load_dotenv()
+api_key = os.getenv("OPENROUTER_API_KEY")
 
 # DEFINE TOOL
 # WEB SEARCH TOOL
@@ -19,7 +21,7 @@ tool = TavilySearchResults(max_results=2)
 # LLM
 llm = ChatOpenAI(
   base_url="https://openrouter.ai/api/v1",
-  api_key="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",
+  api_key= api_key,
 
 )
 
