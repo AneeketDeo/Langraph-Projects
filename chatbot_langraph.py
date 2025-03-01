@@ -26,8 +26,7 @@ graph_builder = StateGraph(State)
 llm = ChatOpenAI(
   base_url="https://openrouter.ai/api/v1",
   api_key="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",
-  # base_url="https://models.inference.ai.azure.com",
-  # api_key="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",
+
 )
 
 
